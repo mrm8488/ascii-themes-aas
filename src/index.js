@@ -13,9 +13,14 @@ router.use(require("compression")());
 router.use(require("cors")());
 router.use(require("morgan")("tiny"));
 
-router.get("/", async (req, res) => {
+router.get("/:text?", async (req, res) => {
+  const text =
+    req.params.text &&
+    (typeof req.params.text === "string" || req.params.text instanceof String)
+      ? req.params.text
+      : undefined;
   try {
-    const data = await asciiThemeGen();
+    const data = await asciiThemeGen(text);
 
     res.setHeader("Content-type", "text/plain");
     res.attachment("your-ascii-theme.txt");
