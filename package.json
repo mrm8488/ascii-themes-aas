@@ -1,11 +1,12 @@
 {
   "name": "ascii-themes-aas",
   "version": "1.0.0",
-  "description": "",
+  "description": "ASCII theme generator as a service",
   "main": "src/index.js",
   "files": [
     "bin",
-    "src"
+    "src",
+    "themes"
   ],
   "scripts": {
     "build": "untracked > .nowignore",
