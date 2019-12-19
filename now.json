@@ -1,0 +1,29 @@
+{
+    "name": "ascii-themes-aas",
+    "version": 2,
+    "public": true,
+    "regions": [
+      "all"
+    ],
+    "builds": [
+      {
+        "src": "src/index.js",
+        "use": "@now/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/robots.txt",
+        "status": 204
+      },
+      {
+        "src": "/favicon.ico",
+        "status": 204
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/src/index.js"
+      }
+    ]
+  }
+  
