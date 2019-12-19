@@ -1,5 +1,9 @@
 "use strict";
 
+const themes = require("../themes/themes.json");
+const figlet = require("figlet");
+const chalk = require("chalk");
+
 module.exports = async (
   text = "ASCII THEME",
   font = "Slant Relief",
