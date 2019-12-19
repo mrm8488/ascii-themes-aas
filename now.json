@@ -8,7 +8,7 @@
       "src": "src/index.js",
       "use": "@now/node"
     },
-    { "src": "./themes/*/**.json", "use": "@now/static" }
+    { "src": "themes/*/themes/*.json", "use": "@now/static" }
   ],
   "routes": [
     {
