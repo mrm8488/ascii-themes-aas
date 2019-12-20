@@ -6,6 +6,8 @@ const { Router } = express;
 
 const router = Router();
 
+const middleware = require("./middleware");
+
 const asciiThemeGen = require("./AsciiThemeGenerator");
 
 router.use(require("helmet")());
@@ -13,15 +15,10 @@ router.use(require("compression")());
 router.use(require("cors")());
 router.use(require("morgan")("tiny"));
 
-router.get("/:text?", async (req, res) => {
-  const text =
-    req.params.text &&
-    (typeof req.params.text === "string" || req.params.text instanceof String)
-      ? req.params.text
-      : undefined;
+router.get("/:text?", middleware, async (req, res) => {
   try {
-    const data = await asciiThemeGen(text);
-    
+    const data = await asciiThemeGen(req.text, req.font, req.themeName);
+
     res.setHeader("Content-type", "text/plain");
     res.setHeader("charset", "utf-8");
     res.attachment("your-ascii-theme");
