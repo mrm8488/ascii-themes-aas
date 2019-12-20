@@ -21,9 +21,10 @@ router.get("/:text?", async (req, res) => {
       : undefined;
   try {
     const data = await asciiThemeGen(text);
-
+    
     res.setHeader("Content-type", "text/plain");
-    res.attachment("your-ascii-theme.txt");
+    res.setHeader("charset", "utf-8");
+    res.attachment("your-ascii-theme");
     res.send(data);
   } catch (error) {
     console.error(error);

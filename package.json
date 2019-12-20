@@ -7,6 +7,10 @@
     "bin",
     "src"
   ],
+  "engines": {
+    "node": ">=12.2.0",
+    "npm": ">=6.13.0"
+  },
   "scripts": {
     "clean": "rm -rf node_modules",
     "dev": "svr",
