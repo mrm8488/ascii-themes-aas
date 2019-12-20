@@ -4,6 +4,8 @@ const themes = require("../themes/themes.json");
 const figlet = require("figlet");
 const chalk = require("chalk");
 
+const skipChars = new Set(["_", " ", "."]);
+
 module.exports = async (
   text = "ASCII THEME",
   font = "Slant Relief",
@@ -26,18 +28,12 @@ module.exports = async (
     verticalLayout: verticalLayout
   });
 
-  if (themeName === "plain") {
-    return data;
-  }
+  if (themeName === "plain") return data;
 
   for (let i = 0; i < data.length; i++) {
     let character = data.charAt(i);
     if (character !== "_") {
-      if (
-        data.charAt(i - 1) == "_" ||
-        data.charAt(i - 1) == " " ||
-        data.charAt(i - 1) == "."
-      ) {
+      if (skipChars.has(data.charAt(i - 1))) {
         colorsIndex++;
         if (colorsIndex >= theme.colors.length) {
           colorsIndex = 0;

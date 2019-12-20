@@ -5,11 +5,9 @@
   "main": "src/index.js",
   "files": [
     "bin",
-    "src",
-    "themes"
+    "src"
   ],
   "scripts": {
-    "build": "untracked > .nowignore",
     "clean": "rm -rf node_modules",
     "dev": "svr",
     "start": "NODE_ENV=production ./bin/server",
